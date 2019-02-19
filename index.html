@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="./dependencies/bootstrap.min.css">
+    <title>Pokemon Redux</title>
+</head>
+<body>
+    <div id="bsov">
+        <div class="wrapper full-width">
+            <div id="header" class="full_width">
+                <h4>Pokemon Battle Arena</h4>
+            </div>
+            <div id="arena" class="full_width">
+                <div id="player_selection">
+                    <div id="p1_select">
+                        <div class="my_input">
+                            <label for="p1_input">Player 1</label>
+                            <input class="" type="text" id="p1_input" name="p1_input" placeholder="Enter name or #">
+                            <button class="button" id="p1_input_button" type="button">Select</button>
+                            <button class="button" id="p1_random_button" type="button">Random</button>
+                        </div>
+                    </div>
+                    <div id="p2_select">
+                        <div class="my_input">
+                            <label for="p2_input">Player 2</label>
+                            <input class="" type="text" id="p2_input" name="p2_input" placeholder="Enter name or #">
+                            <button class="button" id="p2_input_button" type="button">Select</button>
+                            <button class="button" id="p2_random_button" type="button">Random</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="battle_area">
+                    <div class="p1_status">
+                        <h2 id="p1_name">Charizard</h2>
+                        <div id="p1_lifebar"><div id="p1_lifebar_status"></div></div>
+                    </div>
+                    <div class="p2_status">
+                        <h2 id="p2_name">Picachu</h2>
+                        <div id="p2_lifebar"><div id="p2_lifebar_status"></div></div>
+                    </div>
+                    <div id="battlefield">
+                        <div id="p1_char"><img id="p1_sprite" src="" alt=""></div>
+                        <div id="p2_char"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./dependencies/jquery-3.3.1.min.js"></script>
+<script src="./dependencies/popper.min.js"></script>
+<script src="./dependencies/bootstrap.min.js"></script>
+<script src="index.js"></script>
+</html>

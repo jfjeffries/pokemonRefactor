@@ -1,0 +1,190 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2em auto;
+    height: 100vh;
+    background-color: tan;
+}
+.full_width{
+    width: 100%;
+}
+#header{
+    height: 2em;
+    background-color: black;
+    color: white;
+    text-align: center;
+    grid-column: 1/end;
+}
+
+#arena{
+    grid-column: 1/end;
+    grid-row: 2;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 10vh auto;
+}
+label{
+    line-height: 3em;
+    margin: 5px;
+}
+.button{
+    width: 5em;
+    grid-row: 1;
+    border-radius: 4px;
+    box-shadow: 0 6px 2px rgb(114, 107, 107);
+    margin-left: 4px;
+    background-color: rgb(167, 38, 38);
+    border: none;
+    color: white;
+}
+.button:focus{
+    outline: none;
+    background-color: rgb(92, 35, 35);
+}
+.button:active{
+    box-shadow: 0 4px 1px rgb(60, 48, 48);
+    transform: translateY(2px)
+}
+input[type="text"], textarea {
+    margin: 5px;
+    background-color : tan;
+    border-radius: 4px;
+    box-shadow: -2px 2px 2px black, 2px -2px 2px black;
+    outline: none;
+    border: none;
+    padding-left: .5em;
+}
+/* Player selection */
+
+#bsov .my_input{
+    text-decoration: none;
+    border: none;
+}
+#player_selection{
+    grid-column: 1/end;
+    grid-row: 1/2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#p1_select{
+    grid-column: 1/2;
+    display: grid;
+    align-items: center;
+    grid-template-rows: auto;
+    justify-items: center;
+}
+#p2_select{
+    grid-column: 2/3;
+    display: grid;
+    align-items: center;
+    grid-template-rows: auto;
+    justify-items: center;
+}
+
+/* Battle Area */
+
+#battle_area{
+    display: grid;
+    grid-template-rows: 10vh auto;
+    grid-template-columns: 1fr 1fr;
+    background-image: url("./resources/forest.jpg");
+    background: cover;
+}
+.p1_status{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    
+}
+.p2_status{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    
+}
+#p1_name{
+    grid-row: 1;
+    text-align: center;
+    color: white;
+    background-color: black;
+}
+#p2_name{
+    grid-row: 1;
+    text-align: center;
+    color: white;
+    background-color: black;
+}
+#p1_lifebar{
+    grid-row: 2;
+    width: 95%;
+    margin: auto;
+    height: 1.5em;
+    border-radius: .25em;
+    border: 1px solid black;
+}
+#p2_lifebar{
+    grid-row: 2;
+    width: 95%;
+    margin: auto;
+    height: 1.5em;
+    border-radius: .25em;
+    border: 1px solid black;
+}
+#p1_lifebar_status{
+    width: 100%;
+    height: 100%;
+    background-color:  rgb(167, 38, 38);
+}
+#p2_lifebar_status{
+    width: 100%;
+    height: 100%;
+    background-color:  rgb(167, 38, 38);
+}
+
+/* Battlefield */
+
+#battlefield{
+    grid-row: 2/end;
+    grid-column: 1/end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#p1_char{
+    width: 50%;
+    height: 75%;
+    /* background-color: black; */
+    grid-column: 1/2;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* margin-top: 5%; */
+    margin: auto;
+}
+#p2_char{
+    width: 50%;
+    height: 75%;
+    background-color: black;
+    grid-column: 2/end;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* margin-top: 35%; */
+    margin: auto;
+}
+#p1_sprite{
+    height: 100%;
+    filter: flipH;
+    transform: scaleX(-1);
+}
