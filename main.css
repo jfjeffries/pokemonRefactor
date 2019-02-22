@@ -70,7 +70,7 @@ input[type="text"], textarea {
     grid-column: 1/end;
     grid-row: 1/2;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr auto 1fr;
 }
 #p1_select{
     grid-column: 1/2;
@@ -80,11 +80,19 @@ input[type="text"], textarea {
     justify-items: center;
 }
 #p2_select{
-    grid-column: 2/3;
+    grid-column: 3/4;
     display: grid;
     align-items: center;
     grid-template-rows: auto;
     justify-items: center;
+}
+.fight{
+    grid-column: 2/3;
+    margin: auto;
+}
+.fight_button_div{
+    display: grid;
+    justify-content: center;
 }
 
 /* Battle Area */
@@ -96,19 +104,20 @@ input[type="text"], textarea {
     background-image: url("./resources/forest.jpg");
     background: cover;
 }
+.hide{
+    visibility: hidden;
+}
 .p1_status{
     grid-column: 1/2;
     grid-row: 1/2;
     display: grid;
     grid-template-rows: 1fr 1fr;
-    
 }
 .p2_status{
     grid-column: 2/3;
     grid-row: 1/2;
     display: grid;
     grid-template-rows: 1fr 1fr;
-    
 }
 #p1_name{
     grid-row: 1;
@@ -156,35 +165,55 @@ input[type="text"], textarea {
     grid-column: 1/end;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2em auto;
 }
 #p1_char{
     width: 50%;
     height: 75%;
-    /* background-color: black; */
     grid-column: 1/2;
+    grid-row: 2/end;
     display: grid;
     justify-items: center;
     align-items: center;
-    /* margin-left: auto;
-    margin-right: auto; */
-    /* margin-top: 5%; */
     margin: auto;
 }
 #p2_char{
     width: 50%;
     height: 75%;
-    background-color: black;
     grid-column: 2/end;
+    grid-row: 2/end;
     display: grid;
     justify-items: center;
     align-items: center;
-    /* margin-left: auto;
-    margin-right: auto; */
-    /* margin-top: 35%; */
     margin: auto;
 }
+.p1_stats{
+    color: white;
+    grid-row: 1/2;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+.p2_stats{
+    color: white;
+    grid-row: 1/2;
+    margin-left: 2em;
+    margin-right: 2em;
+}
 #p1_sprite{
-    height: 100%;
+    height: 125%;
     filter: flipH;
     transform: scaleX(-1);
+    overflow: hidden;
+}
+#p2_sprite{
+    height: 125%;
+    overflow: hidden;
+}
+.icons{
+    width: 20px;
+    height: 20px;
+    margin-right: 1em;
+}
+.inline{
+    display: inline;
 }

@@ -21,6 +21,7 @@
                             <button class="button" id="p1_random_button" type="button">Random</button>
                         </div>
                     </div>
+                    <div class="fight_button_div"><button class="button fight" id="fight_button">FIGHT!</button></div>
                     <div id="p2_select">
                         <div class="my_input">
                             <label for="p2_input">Player 2</label>
@@ -31,17 +32,29 @@
                     </div>
                 </div>
                 <div id="battle_area">
-                    <div class="p1_status">
-                        <h2 id="p1_name">Charizard</h2>
+                    <div id="p1_status" class="p1_status">
+                        <h3 id="p1_name"></h3>
                         <div id="p1_lifebar"><div id="p1_lifebar_status"></div></div>
                     </div>
-                    <div class="p2_status">
-                        <h2 id="p2_name">Picachu</h2>
+                    <div id="p2_status" class="p2_status">
+                        <h3 id="p2_name"></h3>
                         <div id="p2_lifebar"><div id="p2_lifebar_status"></div></div>
                     </div>
                     <div id="battlefield">
-                        <div id="p1_char"><img id="p1_sprite" src="" alt=""></div>
-                        <div id="p2_char"></div>
+                        <div>
+                            <div class="p1_stats float-left"><span class="inline"><img class="icons inline" src="./resources/shield.png"></img><p id="p1_def" class="inline"></p></span></div>
+                            <div class="p1_stats float-right"><span class="inline"><img class="icons inline" src="./resources/attack.png"></img><p id="p1_att" class="inline"></p></span></div>
+                        </div>
+                        <div id="p1_char">
+                            <img id="p1_sprite" src="" alt="">
+                        </div>
+                        <div>
+                            <div class="p2_stats float-left"><span class="inline"><img class="icons inline" src="./resources/shield.png"></img><p id="p2_def" class="inline"></p></span></div>
+                            <div class="p2_stats float-right"><span class="inline"><img class="icons inline" src="./resources/attack.png"></img><p id="p2_att" class="inline"></p></span></div>
+                        </div>
+                        <div id="p2_char">
+                            <img id="p2_sprite" src="" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,5 +64,5 @@
 <script src="./dependencies/jquery-3.3.1.min.js"></script>
 <script src="./dependencies/popper.min.js"></script>
 <script src="./dependencies/bootstrap.min.js"></script>
-<script src="index.js"></script>
+<script src="main.js"></script>
 </html>
