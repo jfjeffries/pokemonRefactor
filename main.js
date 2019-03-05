@@ -21,56 +21,56 @@
 
     var fight_button = document.getElementById("fight_button")
     
-    fight_button.addEventListener('click', function(event){
+    window.addEventListener("load", function(){
+        var background = getBackground();
+        
+        document.getElementById("battle_area").style.backgroundImage = `url(${background})`;
+    })
 
+
+
+    fight_button.addEventListener('click', function(event){
+        if(!p1){
+            alert("Please enter Player 1")
+        }else if(!p2){
+            alert("Please enter Player 2")
+        }else{
+
+        }
     })
     p1_input_button.addEventListener('click', function(event){
-        // event.preventDefault();
-        // getPokemon(p1_input.value, 1);
-        // console.log(p1);
-        // setPlayer(p1)
-        let prom = new Promise(function(resolve, reject){
-            resolve(getPokemon(p1_input.value, 1));
-        }).then(function(){
-            setPlayer(p1)
-        })
+        getPokemon(p1_input.value, 1)
     })
     p1_random_button.addEventListener('click', function(event){
-        let prom = new Promise(function(resolve, reject){
-            resolve(getPokemon(returnRandom(805), 1));
-        }).then(function(){
-            setPlayer(p1)
-        })
-        // prom;
-        // console.log(p1);
+        getPokemon(returnRandom(805), 1)
     })
     p2_input_button.addEventListener('click', function(event){
-        let prom = new Promise(function(resolve, reject){
-            resolve(getPokemon(p2_input.value, 2));
-        }).then(function(){
-            setPlayer(p2)
-        })
+        getPokemon(p2_input.value, 2)
     })
     p2_random_button.addEventListener('click', function(event){
-        let prom = new Promise(function(resolve, reject){
-            resolve(getPokemon(returnRandom(805), 2));
-        }).then(function(){
-            setPlayer(p2)
-        })
+        getPokemon(returnRandom(805), 2)
     })
     
     class Player{
-        constructor(id, name, att, def, img_src){
+        constructor(id, name, att, def, img_src, type, lifebar){
             this.id = id;
             this.name = name;
             this.att = att;
             this.def = def;
             this.img_src = img_src;
+            this.type = type;
+            this.lifebar = lifebar;
         }
+        hp = 100;
+        att_bonus = 1;
+        def_bonus = 1;
+
         attack(){
 
         }
-        get_hit(){
+        get_hit(hit_str){
+            this.hp -= hit_str;
+            this.lifebar.style = `width: ${this.hp}%`;
 
         }
     }
@@ -78,18 +78,19 @@
         return Math.floor(Math.random()*upper_limit)
     }
     function getPokemon(search, player){
-        // let base = "https://pokeapi.co/api/v2/";
         fetch(`https://pokeapi.co/api/v2/pokemon/${search}/`, {})
         .then(res=> {return res.clone().json()})
         .then(function(data){
             if(player === 1){
-                p1 = new Player(1, data.name, data.stats[4].base_stat, data.stats[3].base_stat, data.sprites.front_default)
+                return p1 = new Player(1, data.name, data.stats[4].base_stat, data.stats[3].base_stat, data.sprites.front_default, data.types[0].type.name, p1_lifebar_status)
             } else {
-                p2 = new Player(2, data.name, data.stats[4].base_stat, data.stats[3].base_stat, data.sprites.front_default)
+                return p2 = new Player(2, data.name, data.stats[4].base_stat, data.stats[3].base_stat, data.sprites.front_default, data.types[0].type.name, p2_lifebar_status)
             }
         })
+        .then(res => setPlayer(res))
     }
     function setPlayer(player){
+
         if(player == undefined){
             return
         }
@@ -105,8 +106,55 @@
             p2_sprite.setAttribute("src", player.img_src)
         }
     }
+    function getBackground(){
+        let x = returnRandom(4);
+        
+        switch(x){
+            case 1:
+                return "./resources/desert.jpg"
+            case 2:
+                return "./resources/forest.jpg"
+            case 3:
+                return "./resources/beach.webp"
+            case 0:
+                // document.getElementsByClassName("toggled").style.color = "black";
+                $(".toggled").css("color", "black")
+                return "./resources/grass.jpg"
+            default:
+                return "./resources/forest.jpg"
+        }
+    }
     function reset(){
         location.reload();
     }
 
 })()
+
+
+
+
+
+
+
+
+// var x = 1;
+// var z = 1;
+// var y = "";
+
+// for(let i=1; i<804; i++){
+//     fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`, {})
+//     .then(res=> {return res.clone().json()})
+//     .then(function(data){
+//         // console.log(data.stats[4].base_stat)
+//         if(data.stats[4].base_stat > x){
+//             x = data.stats[4].base_stat;
+//             y = data.name;
+//             console.log("best offense", i, x, y)
+//         }
+//         if(data.stats[3].base_stat > z){
+//             z = data.stats[3].base_stat;
+//             y = data.name;
+//             console.log("best defense", i, z, y)
+//         }
+//     })
+// }

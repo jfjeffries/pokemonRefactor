@@ -101,8 +101,8 @@ input[type="text"], textarea {
     display: grid;
     grid-template-rows: 10vh auto;
     grid-template-columns: 1fr 1fr;
-    background-image: url("./resources/forest.jpg");
-    background: cover;
+    /* background-image: url("./resources/forest.jpg"); */
+    background-size: cover;
 }
 .hide{
     visibility: hidden;
@@ -216,4 +216,7 @@ input[type="text"], textarea {
 }
 .inline{
     display: inline;
+}
+.dark_text{
+    color: black;
 }
