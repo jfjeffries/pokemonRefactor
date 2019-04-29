@@ -11,8 +11,8 @@
             <div id="header" class="full_width">
                 <h4>Pokemon Battle Arena</h4>
             </div>
-            <div id="arena" class="full_width">
-                <div id="player_selection">
+            <main id="arena" class="full_width">
+                <section id="player_selection">
                     <div id="p1_select">
                         <div class="my_input">
                             <label for="p1_input">Player 1</label>
@@ -30,8 +30,8 @@
                             <button class="button" id="p2_random_button" type="button">Random</button>
                         </div>
                     </div>
-                </div>
-                <div id="battle_area">
+                </section>
+                <section id="battle_area">
                     <div id="p1_status" class="p1_status">
                         <h3 id="p1_name"></h3>
                         <div id="p1_lifebar"><div id="p1_lifebar_status"></div></div>
@@ -47,6 +47,12 @@
                         </div>
                         <div id="p1_char">
                             <img id="p1_sprite" src="" alt="">
+                            <div id="p1_intro_field" class="intro_field">
+                                <!-- <svg viewBox="0 0 56 50"> -->
+                                    <text x="0" y="15" id="p1_intro_name"></text>
+                                    <text x="0" y="15" id="p1_slogan">I choose you!</text>
+                                <!-- </svg> -->
+                            </div>
                         </div>
                         <div>
                             <div class="p2_stats float-left"><span class="inline"><img class="icons inline" src="./resources/shield.png"></img><p id="p2_def" class="inline toggled"></p></span></div>
@@ -54,10 +60,14 @@
                         </div>
                         <div id="p2_char">
                             <img id="p2_sprite" src="" alt="">
+                            <div id="p2_intro_field" class="intro_field">
+                                <span id="p2_intro_name"></span>
+                                <span id="p2_slogan">I choose you!</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </section>
+            </main>
         </div>
     </div>
 </body>
