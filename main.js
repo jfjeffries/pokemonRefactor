@@ -78,177 +78,254 @@
         hp = 100;
         att_bonus = 1;
         def_bonus = 1;
-        random_att_bonus = returnRandom(1);
-        random_def_bonus = returnRandom(1);
-        slogan = 'I choose you!';
+        bonus_saying = '';
+        att_num = function(){
+            if(this.id == 1){
+                return p1_att;
+            } else {
+                return p2_att;
+            }
+        }
+
+        setStats(){
+            this.att_num.innerHTML = this.att;
+        }
 
         findRandomBonus(){
-            x = Math.floor(Math.random());
-            this.def = (this.def * x) + this.def;
-            this.att = (this.att * x) + this.att;
+            let x;
+            do{
+                x = Math.random();
+            }
+            while( x < 0.4 );
+            this.def = Math.floor((this.def * x)) + this.def;
+            this.att = Math.floor((this.att * x)) + this.att;
+            this.def_bonus = Math.floor(x * 100)/100;
+            this.att_bonus = Math.floor(x * 100)/100;
+            console.log(this);
         }
 
         findBonus(enemy){
+            console.log(this.name, this.type, enemy)
             switch (this.type){
                 case 'bug': {
                     if(enemy == 'psychic' || enemy == 'grass' || enemy == 'dark'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'fight' || enemy == 'fire' || enemy == 'flying' || enemy == 'ghost' || enemy == 'poison' || enemy == 'steel' || enemy == 'fairy'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }
+                    break;
                 }
                 case 'electric': {
                     if(enemy == 'flying' || enemy == 'water'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'dragon' || enemy == 'electric' || enemy == 'grass'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     };
                     if(enemy == 'ground'){
                         this.att = 0;
+                        this.bonus_saying = "OH NO! Cannot harm the enemy!";
                     }
                 }
+                break;
                 case 'fire': {
                     if(enemy == 'bug' || enemy == 'grass' || enemy == 'ice' || enemy == 'steel'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'dragon' || enemy == 'fire' || enemy == 'rock' || enemy == 'water'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }    
                 }
+                break;
                 case 'grass': {
                     if(enemy == 'ground' || enemy == 'rock' || enemy == 'water'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'bug' || enemy == 'fire' || enemy == 'dragon' || enemy == 'grass' || enemy == 'poison' || enemy == 'steel' || enemy == 'flying'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     };
                 }
+                break;
                 case 'normal': {
                     if(enemy == 'rock' || enemy == 'steel'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     };
                 }
+                break;
                 case 'rock': {
                     if(enemy == 'bug' || enemy == 'fire' || enemy == 'flying' || enemy == 'ice'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'fight' || enemy == 'ground' || enemy == 'steel'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     };
                 }
+                break;
                 case 'dark': {
                     if(enemy == 'ghost' || enemy == 'psychic'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     }
                     if(enemy == 'dark' || enemy == 'fight' || enemy == 'fairy'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }
                 }
+                break;
                 case 'fairy': {
                     if(enemy == 'dark' || enemy == 'dragon' || enemy == 'fight'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'fire' || enemy == 'poison' || enemy == 'steel'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }
                 }
+                break;
                 case 'flying': {
                     if(enemy == 'bug' || enemy == 'grass' || enemy == 'fight'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'electric' || enemy == 'rock' || enemy == 'steel'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }
                 }
+                break;
                 case 'ground': {
                     if(enemy == 'electric' || enemy == 'fire' || enemy == 'poison' || enemy == 'rock' || enemy == 'steel'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'bug' || enemy == 'grass'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }
                     if(enemy == 'flying'){
                         this.att = 0;
+                        this.bonus_saying = "OH NO! Cannot harm the enemy!";
                     }
                 }
+                break;
                 case 'poison': {
                     if(enemy == 'grass' || enemy == 'fairy'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'ghost' || enemy == 'ground' || enemy == 'rock' || enemy == 'poison'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }
                 }
+                break;
                 case 'steel': {
                     if(enemy == 'fairy' || enemy == 'ice' || enemy == 'rock'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'electric' || enemy == 'fire' || enemy == 'steel' || enemy == 'water'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }
                 }
+                break;
                 case 'dragon': {
                     if(enemy == 'dragon'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'steel'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }
                     if(enemy == 'fairy'){
                         this.att = 0;
+                        this.bonus_saying = "OH NO! Cannot harm the enemy!";
                     }
                 }
+                break;
                 case 'fighting': {
                     if(enemy == 'dark' || enemy == 'ice' || enemy == 'normal' || enemy == 'rock' || enemy == 'steel'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'bug' || enemy == 'fairy' || enemy == 'flying' || enemy == 'poison' || enemy == 'psychic'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }
                     if(enemy == 'ghost'){
                         this.att == 0;
+                        this.bonus_saying = "OH NO! Cannot harm the enemy!";
                     }
                 }
+                break;
                 case 'ghost': {
                     if(enemy == 'ghost' || enemy == 'psychic'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'dark'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }
                     if(enemy == 'normal'){
                         this.att = 0;
+                        this.bonus_saying = "OH NO! Cannot harm the enemy!";
                     }
                 }
+                break;
                 case 'ice': {
                     if(enemy == 'dragon'  || enemy == 'flying' || enemy == 'ground'|| enemy == 'grass'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'ice' || enemy == 'fire' || enemy == 'steel' || enemy == 'water'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }
                 }
+                break;
                 case 'psychic': {
-                    if(enemy == 'fight' || enemy == 'poison'){
-                        this.att *= 2;
+                    if(enemy == 'fighting' || enemy == 'poison'){
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'psychic' || enemy == 'steel'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }
                     if(enemy == 'dark'){
                         this.att = 0;
+                        this.bonus_saying = "OH NO! Cannot harm the enemy!";
                     }
                 }
+                break;
                 case 'water': {
                     if(enemy == 'fire' || enemy == 'ground' || enemy == 'rock'){
-                        this.att *= 2;
+                        this.att *=2;
+                        this.bonus_saying = "Strong against this type, Attack doubled!"
                     };
                     if(enemy == 'dragon' || enemy == 'grass' || enemy == 'water'){
                         this.att *= .5;
+                        this.bonus_saying = "Weak against this type, Attack halved!"
                     }
                 }
+                break;
+                default: this.bonus_saying = "No particular strength."
             }
         }
 
@@ -280,7 +357,7 @@
             }
         })
         .then(res => {
-            introAnimation(res);
+            // introAnimation(res);
             return res;
         })
         .then(res => {
@@ -330,9 +407,25 @@
     
     //Main battle function
     function battle(){
-        let game = new Game(p1, p2);
-        game.player1.findBonus(game.player2.type);
-        game.player2.findBonus(game.player1.type);
+        // let game = new Game(p1, p2);
+        // // game.player1.findRandomBonus();
+        // // game.player2.findRandomBonus();
+
+        // // game.player1.findBonus(game.player2.type);
+        // // game.player2.findBonus(game.player1.type);
+
+        // // console.log(game)
+
+        console.log("p1 bonus 1", p1.bonus_saying)
+        p1.findRandomBonus();
+        console.log("p1 bonus 2", p1.bonus_saying)
+        p2.findRandomBonus();
+        console.log("p1 bonus 3", p1.bonus_saying)
+        p1.findBonus(p2.type);
+        console.log("p1 bonus 4", p1.bonus_saying)
+        p2.findBonus(p1.type);
+        let game = new Game(p1,p2);
+        console.log(game);
 
         //Display bonuses or negatives
         //Check to make sure someone can do damage (ex. normal vs ghost will not work)
@@ -340,9 +433,9 @@
         //while(?) both have hitpoints, do a turn
         //Check hp levels
         //If winner, decide winner, if not, do another turn
-        while(p1.hp>0 && p2.hp>0){
+        // while(p1.hp>0 && p2.hp>0){
 
-        }
+        // }
     }
     function turn(){
         
@@ -414,12 +507,24 @@
             p1_name.innerHTML = "";
             p1_sprite.setAttribute("src", "");
             p1_sprite.style.display = "none";
+            p1.bonus_saying = "";
+            p1.att = 0;
+            p1.def = 0;
+            p1.att_bonus = 0;
+            p1.def_bonus = 0;
+            p1.hp = 100;
         }else if(player === 2 && p2){
             p2_att.innerHTML = "";
             p2_def.innerHTML = "";
             p2_name.innerHTML = "";
             p2_sprite.setAttribute("src", "")
             p2_sprite.style.display = "none";
+            p2.bonus_saying = "";
+            p2.att = 0;
+            p2.def = 0;
+            p2.att_bonus = 0;
+            p2.def_bonus = 0;
+            p2.hp = 100;
         }
         return;
     }
